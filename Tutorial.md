@@ -281,3 +281,6 @@ def reprocess(std_face_loc,self_img,self_face_loc):
 > 4. interpolation,插值方式,在需要放大时选用线性插值(LINEAR),缩小时采用区域插值(AREA),综合性能和效果都很不错
 
 这样,对new_img进行采样取特征就没有问题了.
+
+
+未完待续~~
