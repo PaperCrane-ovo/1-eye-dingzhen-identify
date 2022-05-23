@@ -71,28 +71,17 @@ def reprocess(std_faceloc,img,self_faceloc):
     return new_img
 
 def main():
-    std_path = ''
-    self_path = ''
-    if len(sys.argv ) == 3:
-        std_path = sys.argv[1]
-        self_path = sys.argv[2]
-    elif len(sys.argv) == 2:
-        std_path = sys.argv[1]
-        self_path = 'self.jpg'
-    else :
-        std_path = 'res/std_dingzhen.jpg'
-        self_path = 'res/self.jpg'
-    std_img = cv2.imread(std_path)
+    std_img = cv2.imread('res/std_dingzhen.jpg')
     std_face_loc = face_locator(std_img)
-    if std_face_loc:
-        std_keypoints = extract_features(std_img, std_face_loc)
+    std_keypoints = extract_features(std_img,std_face_loc)
+    stimg = draw(std_img,std_face_loc)
+
     cap = cv2.VideoCapture(0)
     n = 0
     img = None
-    dis = 0
+    rate = 0
     global maxdist
-    stimg = draw(std_img,std_face_loc)
-
+    
     while True:
         
         if n==100: n=0
@@ -105,8 +94,8 @@ def main():
                 new_img = reprocess(std_face_loc,self_img,self_face_loc)
                 new_face_loc = face_locator(new_img)
                 self_keypoints = extract_features(new_img, new_face_loc)
-                dis = cal(std_keypoints,self_keypoints)
-            img = draw(self_img,self_face_loc,dis)
+                rate = cal(std_keypoints,self_keypoints)
+            img = draw(self_img,self_face_loc,rate)
             cv2.imshow('standard!',stimg)
             cv2.imshow('myself',img)
             cv2.waitKey(1)
@@ -114,7 +103,7 @@ def main():
         n+=1
 
 
-
+'''
 
 def main2():
     std_img = cv2.imread('res/std_dingzhen.jpg')
@@ -134,7 +123,7 @@ def main2():
         cv2.imshow('self',img)
         cv2.waitKey()
 
-
+'''
 
 if __name__ == '__main__':
     main()

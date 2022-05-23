@@ -6,7 +6,7 @@
 
 > 没错,时隔3天，我又回来了。对于自己的处女作，总是感到惴惴不安，一方面，因为这就是个玩具，怕被各路大神笑话，另一方面又觉得，处女作要是留下什么粗糙那就悲了，于是本着readme立下的flag，在此出个教程，或许之前已经有类似的或雷同的，请纯属巧合，也请各路大神嘴下留情，纸鹤不胜感激！
 
-
+***请一定要看到最后,一定一定!***
 
 ## 正片开始
 
@@ -143,6 +143,18 @@ def extract_features(img,face):
 
 > **题外话** :想要让python发挥**胶水语言**的功能,常常要借助比较底层的东西(本例**numpy**数组比较接近底层),可以更方便地黏合不同的包   
 
+**效果**如下:
+
+![田所浩二](pictures/tiansuo_features.png)
+
+![dingzhen](pictures/dingzhen_features.png)
+
+
+
+> 你是一个一个一个压力马斯内啊啊啊啊啊啊~~
+
+
+
 #### 比对特征
 
 上一步我们获得了一个含有68个点的列表`key_points`,这一步我们要完成比对,所以我们将丁真先生请出来  
@@ -202,23 +214,25 @@ for i in range(68):
 再结合0到1的范围,我们便可以确定两个函数符合我们的要求
 
 - `sigmoid`函数
-- tanh(双曲正切函数)
+- `tanh`(双曲正切函数)
 
 
 
-1. **sigmoid**函数,解析式  **$f(x)=\frac{1}{1+e^{-x}}$**,图象如下图
+1. **sigmoid**函数,解析式  <img src="https://latex.codecogs.com/svg.image?f(x)=\frac{1}{1&plus;e^{-x}}" title="https://latex.codecogs.com/svg.image?f(x)=\frac{1}{1+e^{-x}}" />,图象如下图
 
 
 
-<iframe src="https://www.desmos.com/calculator/h39kqklrht?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="800"><defs/><g transform="scale(2,2)"><g id="background-2b8cf4fe"><rect fill="white" stroke="none" x="0" y="0" width="400" height="400" class="dcg-svg-background"/></g><g id="background-images-2b8cf4fe"/><g id="graphpaper-2b8cf4fe"><g id="grid-2b8cf4fe"><g><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 20.5 0 L 20.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 41.5 0 L 41.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 61.5 0 L 61.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 82.5 0 L 82.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 103.5 0 L 103.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 123.5 0 L 123.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 144.5 0 L 144.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 165.5 0 L 165.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 206.5 0 L 206.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 227.5 0 L 227.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 248.5 0 L 248.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 268.5 0 L 268.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 289.5 0 L 289.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 310.5 0 L 310.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 330.5 0 L 330.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 351.5 0 L 351.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 372.5 0 L 372.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 392.5 0 L 392.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 379.5 L 400 379.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 356.5 L 400 356.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 333.5 L 400 333.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 311.5 L 400 311.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 288.5 L 400 288.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 266.5 L 400 266.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 220.5 L 400 220.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 198.5 L 400 198.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 175.5 L 400 175.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 153.5 L 400 153.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 130.5 L 400 130.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 108.5 L 400 108.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 85.5 L 400 85.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 62.5 L 400 62.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 40.5 L 400 40.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 17.5 L 400 17.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 20.5 0 L 20.5 400" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 103.5 0 L 103.5 400" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 268.5 0 L 268.5 400" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 351.5 0 L 351.5 400" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 0 356 L 400 356" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 0 131 L 400 131" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 0 18 L 400 18" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/></g></g><g id="axis-2b8cf4fe"><g id="yaxis-2b8cf4fe"><title>Y axis</title><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-axis-line" paint-order="fill stroke markers" d=" M 186 0 L 186 400" stroke-opacity="0.9" stroke-miterlimit="10" stroke-width="1.5" stroke-dasharray=""/></g><g id="xaxis-2b8cf4fe"><title>X axis</title><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-axis-line" paint-order="fill stroke markers" d=" M 0 244 L 400 244" stroke-opacity="0.9" stroke-miterlimit="10" stroke-width="1.5" stroke-dasharray=""/></g><g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="177.11689271619875" y="259.3800387243741" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">0</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="177.11689271619875" y="259.3800387243741" text-anchor="middle">0</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="18.087705092587015" y="259.3800387243741" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">-4</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="18.087705092587015" y="259.3800387243741" text-anchor="middle">-4</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="100.88330476376788" y="259.3800387243741" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">-2</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="100.88330476376788" y="259.3800387243741" text-anchor="middle">-2</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="268.80555879362964" y="259.3800387243741" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">2</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="268.80555879362964" y="259.3800387243741" text-anchor="middle">2</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="351.6011584648105" y="259.3800387243741" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">4</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="351.6011584648105" y="259.3800387243741" text-anchor="middle">4</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="174.78583802869875" y="360.2706637243741" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">-1</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="174.78583802869875" y="360.2706637243741" text-anchor="middle">-1</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="177.11689271619875" y="134.4894137243741" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">1</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="177.11689271619875" y="134.4894137243741" text-anchor="middle">1</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="177.11689271619875" y="21.598788724374096" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">2</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="177.11689271619875" y="21.598788724374096" text-anchor="middle">2</text></g></g></g></g><g id="expressions-2b8cf4fe"><g id="sketch-2b8cf4fe"><title>Expression 1</title><path fill="#2d70b3" stroke="none" paint-order="stroke fill markers" d="" fill-opacity="0.4"/><g><path fill="none" stroke="#2d70b3" class="dcg-svg-curve" paint-order="fill stroke markers" d=" M 0 242.3233872904412 L 0 242.3233872904412 L 17.871093749999968 241.66070267367775 L 32.71484375000001 240.85622680459147 L 45.41015625 239.91314584267369 L 56.54296875000001 238.83158640459402 L 66.6015625 237.59680220253506 L 75.78125 236.21017706884186 L 84.17968749999999 234.68473497430526 L 92.08984375 232.98891523122828 L 99.51171874999999 231.13968870429585 L 106.640625 229.10282992398479 L 113.4765625 226.88888440159315 L 120.1171875 224.47712975755545 L 126.66015625 221.83707314483246 L 133.20312499999997 218.92790765567574 L 139.74609374999997 215.74821161786267 L 146.38671874999997 212.2502650925085 L 153.3203125 208.32256424119768 L 160.64453125 203.89797711882397 L 168.84765624999997 198.66225938975606 L 179.1015625 191.82557703581185 L 205.76171875 173.91086791663776 L 213.96484375 168.7613144113845 L 221.28906249999997 164.43255820128363 L 228.22265624999997 160.60745966285825 L 234.86328125 157.21468189458182 L 241.40625 154.14179598545243 L 247.94921875 151.33965623224074 L 254.49218749999997 148.8043828934598 L 261.1328125 146.494691337497 L 267.96875 144.37974684593385 L 275.09765625 142.438442652787 L 282.61718749999994 140.6581922546365 L 290.52734375 139.05158308694917 L 298.92578125 137.6089910166355 L 308.0078125 136.3124168531847 L 317.96874999999994 135.15592408174803 L 329.00390625 134.14100642654478 L 341.40625 133.2658993419305 L 355.76171874999994 132.52090453013756 L 372.75390624999994 131.90836001697238 L 393.75 131.423479307867 L 399.99999999999994 131.32008185598988" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-opacity="0.9" stroke-dasharray=""/></g></g></g><g id="labels-2b8cf4fe"/></g></svg>
 
 
 
-2. **tanh**双曲正切函数,解析式    $f(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$,图象如下图
+2. **tanh**双曲正切函数,解析式    <img src="https://latex.codecogs.com/svg.image?f(x)=\frac{e^x-e^{-x}}{e^x&plus;e^{-x}}" title="https://latex.codecogs.com/svg.image?f(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}" />,图象如下图
 
 
 
-<iframe src="https://www.desmos.com/calculator/6xtqpghvcf?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="800"><defs/><g transform="scale(2,2)"><g id="background-a301c7be"><rect fill="white" stroke="none" x="0" y="0" width="400" height="400" class="dcg-svg-background"/></g><g id="background-images-a301c7be"/><g id="graphpaper-a301c7be"><g id="grid-a301c7be"><g><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 10.5 0 L 10.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 46.5 0 L 46.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 81.5 0 L 81.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 117.5 0 L 117.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 153.5 0 L 153.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 224.5 0 L 224.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 260.5 0 L 260.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 296.5 0 L 296.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 331.5 0 L 331.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 367.5 0 L 367.5 400" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 383.5 L 400 383.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 347.5 L 400 347.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 312.5 L 400 312.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 276.5 L 400 276.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 240.5 L 400 240.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 169.5 L 400 169.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 133.5 L 400 133.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 97.5 L 400 97.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 62.5 L 400 62.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-minor-gridline" paint-order="fill stroke markers" d=" M 0 26.5 L 400 26.5" stroke-opacity="0.2" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 46.5 0 L 46.5 400" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 331.5 0 L 331.5 400" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 0 348 L 400 348" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-major-gridline" paint-order="fill stroke markers" d=" M 0 62 L 400 62" stroke-opacity="0.2500000000000001" stroke-miterlimit="10" stroke-dasharray=""/></g></g><g id="axis-a301c7be"><g id="yaxis-a301c7be"><title>Y axis</title><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-axis-line" paint-order="fill stroke markers" d=" M 189 0 L 189 400" stroke-opacity="0.9" stroke-miterlimit="10" stroke-width="1.5" stroke-dasharray=""/></g><g id="xaxis-a301c7be"><title>X axis</title><path fill="none" stroke="rgb(0,0,0)" class="dcg-svg-axis-line" paint-order="fill stroke markers" d=" M 0 205 L 400 205" stroke-opacity="0.9" stroke-miterlimit="10" stroke-width="1.5" stroke-dasharray=""/></g><g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="180.18856897541514" y="220.7174223180728" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">0</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="180.18856897541514" y="220.7174223180728" text-anchor="middle">0</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="43.87181015257548" y="220.7174223180728" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">-2</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="43.87181015257548" y="220.7174223180728" text-anchor="middle">-2</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="331.9604059232548" y="220.7174223180728" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">2</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="331.9604059232548" y="220.7174223180728" text-anchor="middle">2</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="177.85751428791514" y="351.59619285966244" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">-2</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="177.85751428791514" y="351.59619285966244" text-anchor="middle">-2</text></g><g class="dcg-svg-axis-value"><text fill="none" stroke="#ffffff" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="180.18856897541514" y="65.83865177648316" text-anchor="middle" stroke-miterlimit="2" stroke-width="3" stroke-dasharray="">2</text><text fill="#000000" stroke="none" font-family="Arial" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="180.18856897541514" y="65.83865177648316" text-anchor="middle">2</text></g></g></g></g><g id="expressions-a301c7be"><g id="sketch-a301c7be"><title>Expression 1</title><path fill="#c74440" stroke="none" paint-order="stroke fill markers" d="" fill-opacity="0.4"/><g><path fill="none" stroke="#c74440" class="dcg-svg-curve" paint-order="fill stroke markers" d=" M 0 275.6345413637543 L 0 275.6345413637543 L 19.726562499999996 275.11255811614285 L 35.15624999999998 274.45349427285527 L 47.94921875000001 273.65262668319974 L 58.88671875 272.7112873628374 L 68.45703125000001 271.630554983113 L 77.05078124999999 270.4006288270532 L 84.86328125 269.0210061755904 L 92.08984375000001 267.47987759513063 L 98.828125 265.7748642854989 L 105.2734375 263.86658035302577 L 111.42578124999999 261.7599525029782 L 117.38281249999999 259.42589678771833 L 123.14453125 256.8675726473773 L 128.80859375 254.04265568879322 L 134.47265625 250.89261068187446 L 140.234375 247.34135544080516 L 146.09375 243.36424718289197 L 152.1484375 238.8696229189914 L 158.49609375 233.75376379566606 L 165.13671874999997 227.99618966943163 L 172.36328125 221.32911774404732 L 181.15234375 212.80631195376205 L 208.88671875 185.59659145014768 L 216.015625 179.18298172624313 L 222.55859375 173.6852184695177 L 228.80859375 168.82731629373995 L 234.96093750000003 164.44583466267474 L 240.91796875 160.5909020297787 L 246.77734375 157.16834278268584 L 252.53906250000003 154.14902774610331 L 258.30078125 151.45633810801135 L 264.16015625 149.031563069348 L 270.21484375 146.83215280486877 L 276.46484375 144.8582154559176 L 283.00781250000006 143.08029550059916 L 289.94140625 141.47977523614412 L 297.36328125 140.04619301973503 L 305.37109375000006 138.77451890971633 L 314.16015625 137.65135504395192 L 323.92578125 136.67357371063343 L 335.05859375 135.8299055213884 L 347.94921875 135.12328052571593 L 363.37890625 134.5477490026285 L 382.71484375 134.099224530992 L 400 133.85850433812664" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-opacity="0.9" stroke-dasharray=""/></g></g></g><g id="labels-a301c7be"/></g></svg>
 
 
 
@@ -233,7 +247,11 @@ for i in range(68):
 
   > 就两行而已我看谁敢说麻烦!
 
-- **重点**:其实是我们的欧氏距离之和一定是一个正数,而能把正数映射到0到1之间的只有tanh,而sigmoid会卡在0.5的下限,需要加偏置,过于麻烦
+  
+
+- **重点**:其实是我们的欧氏距离之和一定是一个正数,而能把正数映射到0到1之间的只有tanh,而sigmoid会卡在0.5的下限,需要加一个偏置,过于麻烦
+
+
 
 所以换算如下:
 
@@ -244,9 +262,27 @@ rate = 1-np.tanh(sum/10000)
 > - 首先是一个大小问题,欧氏距离和越大,相似度越小,所以要用1减一下
 > - 这里用了sum/10000是因为根据上图,tanh在x>2的时候就已经趋近于1了,发生了梯度消失.为了让rate能够拉开差距,我们需要将sum给压缩到0到2这个区间,而欧式距离是像素为单位,所以除以10000是差不多的一个范围.
 
-至此,计算部分结束!    
+
+
+至此,计算部分结束!    附上代码
+
+```python
+def cal(std_key_points,self_key_points):
+    for i in range(68):
+		key_points[i]-=key_points[0]
+    	dingzhen_key_points[i]-=dingzhen_key_points[0]
+    sum = 0
+	for i in range(68):
+    	sum+=np.linalg.norm(key_points[i]-dingzhen_key_points[i])
+    rate = 1-np.tanh(sum/10000)
+    return rate
+```
+
+
 
 而最终得到的这个rate,就是第一张图中我的脸下面的那一串数字  
+
+
 
 #### 图像重新处理
 
@@ -256,8 +292,8 @@ rate = 1-np.tanh(sum/10000)
 
 - 在[提取特征](#提取特征)这一步,我们直接将框内的68特征点拿出来,在[比对特征](#比对特征)这一步就直接向量化并且计算了欧氏距离  
 
-- 但是,即使是同一张脸,向量长度也会因为脸框的大小不同而不同,这样欧氏距离就不单单是受脸型的影响了
-- 换句话说,就是脸框大小不同时,欧氏距离不能衡量两张脸的差距
+- ***但是,即使是同一张脸,向量长度也会因为脸框的大小不同而不同,这样欧氏距离就不单单是受脸型的影响了***
+- 换句话说,就是脸框**大小不同**时,***欧氏距离不能衡量两张脸的差距***
 - 而脸框大小很容易就会受到你离摄像头距离的影响,如果近了,很显然就是大头照
 
 所以还需要处理一下,将摄像头收到的图片按照脸框大小进行缩放,使得缩放后你的照片和丁真先生的照片中,人脸框的大小是一样的
@@ -282,5 +318,163 @@ def reprocess(std_face_loc,self_img,self_face_loc):
 
 这样,对new_img进行采样取特征就没有问题了.
 
+#### 画图
 
-未完待续~~
+我们还差最后一步,将两个人脸用红框标注出来,并把相似度标注出来   
+
+教程马上就结束咯,再坚持一下吧
+
+
+
+首先是脸框
+
+```python
+def draw(img,face_loc):
+    p1 = x1,y1 = face_loc.left(),face_loc.top()
+    p2 = x2,y2 = face_loc.right(),face_loc.bottom()
+    cv2.rectangle(img,p1,p2,(0,0,255),2)
+    return img
+```
+
+> 矩形定位只需要左上和右下两个点,所以用了p1和p2,后面两个参数分别是颜色的8位RGB和线条粗细
+
+然后是将相似度写上去
+
+```python
+def draw(img,face_loc,rate):
+    '''
+    在红框下边中心点显示会比较好,同时为了不与红框重合,下移10个像素点
+    '''
+    p3 = x3,y3 = int((face_loc.left()+face_loc.right())/2),face_loc.bottom()+10
+    cv2.putText(img,str(rate),(p3),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,255,255),2)
+    return img
+```
+
+> `putText()`,在img上p3坐标处显示字符串rate,后面几个是字体,大小,颜色,粗细的参数
+
+很自然的,我们想要把这两个函数**合并**到一起,不过先考虑几个问题:
+
+- 丁真的脸上是不会有相似度的
+- 所以需要一个额外参数把我和丁真区分开来,直接借用rate即可
+- 另一个问题,计算得到的相似度是会上下浮动的,这个数浮动太快不宜观察
+- 所以考虑这张脸的最大相似度,如果计算之后大于它,就更新,而只显示最大值
+- 这样就是一个比较稳定的值
+
+代码如下:
+
+```python
+maxrate = 0
+def draw(img,face_loc,rate=1):
+    p1 = x1,y1 = face_loc.left(),face_loc.top()
+    p2 = x2,y2 = face_loc.right(),face_loc.bottom()
+    p3 = int((x1+x2)/2),y2+10
+    cv2.rectangle(img,p1,p2,(0,0,255),2)
+    if rate!=1:
+        global maxrate  #修改全局变量需要用global再次声明
+        maxrate = max(maxrate,rate)
+        cv2.putText(img,str(maxrate),(p3),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,255,255),2)
+    return img
+```
+
+> 如果rate是默认值,就说明是丁真脸,不用显示rate,直接返回  
+>
+> 另一种情况就不用多解释了吧  
+
+***这里用全局变量不是个好习惯,因为这个玩具比较小所以可以用用,大项目一定不要用啊啊啊啊啊***
+
+
+
+然后再对前面[从摄像头读入你的face!](#从摄像头读入你的face!)这一步修改一下,变成main函数,同时考虑几个问题
+
+- `draw()`函数中有一个maxrate,如果摄像头前换人了,我们需要把他归零,不然相似度会被其他人影响
+- 我们需不需要每次while True循环时都做计算?
+
+```python
+def main():
+    dingzhen_img = cv2.imread('res/std_dingzhen.jpg')
+	dingzhen_locator = face_locator(dingzhen_img)
+	dingzhen_key_points = extract_features(dingzhen_img,dingzhen_locator)
+    stimg = draw(dingzhen_img,dingzhen_locator)#注意这里是丁真,所以让第三个参数rate为默认值
+    #丁真提取完毕,暂时不去管他
+    global maxrate
+    cap = cv2.VideoCapture(0)
+    while True:
+        ret,self_img = cap.read()
+        self_img = cv2.flip(self_img,1)
+        self_face_loc = face_locator(self_img)
+        if self_face_loc:
+            #下面是进行图象重新处理
+            new_img = reprocess(std_face_loc,self_img,self_face_loc)
+            new_face_loc = face_locator(new_img)
+            self_keypoints = extract_features(new_img, new_face_loc)
+            rate = cal(std_keypoints,self_keypoints)
+            img = draw(self_img,self_face_loc,rate)#注意这里为了画我而传了第三个参数rate
+            #显示丁真
+            cv2.imshow('standard!',stimg)
+            #显示你
+            cv2.imshow('myself',img)
+            cv2.waitKey(1)
+        #如果没有face那就将maxrate归零
+        else: maxrate = 0
+        
+        
+if __name__=='__main__':
+    main()
+```
+
+***只差最后一步了!***
+
+> 我们需不需要每次循环都做计算?(进行`if self_face_loc`里边的操作)
+
+- 亲身经历告诉你是不可以的
+- 如果每次while都进行`if self_face_loc`里边的操作,可以预想到while的循环时长会变长许多
+- 这样会导致从摄像头画面采样率降低(单位时间内执行`cap.read()`的次数变少了),反映出来就是图像会很卡
+- 所以我们可以每100帧进行一次采样计算,这样画面流畅度不会受太大影响
+
+```python
+#补充
+def main():
+    ...
+    n=0  #表示循环次数,100次归零一次并采样计算
+    img = None
+    rate = 0
+    while True:
+    	if n==100: n=0
+        ...
+        if self_face_loc:
+            if not n:
+                '''
+                这部分是上面的'下面对图象重新处理'一直到'img = ...'中间的4行
+                '''
+            ...
+        else: ...
+```
+
+至此,你应该能看到开头的那个画面了  
+
+如果右边的人不太一样,那也不稀奇,蛮正常的
+
+
+
+代码在`recognizer.py`,本篇为方便理解,部分变量名做了替换
+
+
+
+#### 那么本篇教程就结束啦,祝你们玩得开心!
+
+
+
+希望看到这里的你们能收住你们的大刀,因为.....
+
+
+
+我也是丁真**黑**啦hhhhh
+
+
+
+所以祝你们的相似度越**小**越**好**!
+
+
+
+**润回去赶大作业(逃)**
+
