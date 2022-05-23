@@ -218,7 +218,9 @@ for i in range(68):
 
 
 
+
 1. **sigmoid**函数,解析式  <img src="https://latex.codecogs.com/svg.image?f(x)=\frac{1}{1&plus;e^{-x}}" title="https://latex.codecogs.com/svg.image?f(x)=\frac{1}{1+e^{-x}}" />,图象如下图
+
 
 
 
@@ -227,7 +229,10 @@ for i in range(68):
 
 
 
-2. **tanh**双曲正切函数,解析式    <img src="https://latex.codecogs.com/svg.image?f(x)=\frac{e^x-e^{-x}}{e^x&plus;e^{-x}}" title="https://latex.codecogs.com/svg.image?f(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}" />,图象如下图
+
+1. **tanh**双曲正切函数,解析式    <img src="https://latex.codecogs.com/svg.image?f(x)=\frac{e^x-e^{-x}}{e^x&plus;e^{-x}}" title="https://latex.codecogs.com/svg.image?f(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}" />,图象如下图
+
+
 
 
 
