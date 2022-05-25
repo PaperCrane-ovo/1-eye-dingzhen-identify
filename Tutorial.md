@@ -100,9 +100,9 @@ while True:
 
 ```python
 def face_locator(img):
-    detector = dlib.get_frontal_face_detector()
-    dets = detector(img,0)
-    if not dets:
+	detector = dlib.get_frontal_face_detector()
+	dets = detector(img,0)
+	if not dets:
         return None
     return max(dets,key = lambda d:d.area())
 ```
@@ -126,10 +126,10 @@ def face_locator(img):
 ```python
 def extract_features(img,face):
     predictor = dlib.shape_predictor('res/shape_predictor_68_face_landmarks.dat')
-	key_points = []
+    key_points = []
     landmark = predictor(img,face)
     for i in range(68):
-		pos = landmark.part(i)
+        pos = landmark.part(i)
         key_points.append(np.array([pos.x,pos.y],dtype = np.float32))
     return key_points
 ```
@@ -243,7 +243,7 @@ for i in range(68):
 
   ```python
   def sigmoid(x):
-  	return 1/1+np.exp(-x)
+      return 1/1+np.exp(-x)
   ```
 
   > 就两行而已我看谁敢说麻烦!
@@ -270,11 +270,11 @@ rate = 1-np.tanh(sum/10000)
 ```python
 def cal(std_key_points,self_key_points):
     for i in range(68):
-		key_points[i]-=key_points[0]
-    	dingzhen_key_points[i]-=dingzhen_key_points[0]
+        key_points[i]-=key_points[0]
+        dingzhen_key_points[i]-=dingzhen_key_points[0]
     sum = 0
 	for i in range(68):
-    	sum+=np.linalg.norm(key_points[i]-dingzhen_key_points[i])
+        sum+=np.linalg.norm(key_points[i]-dingzhen_key_points[i])
     rate = 1-np.tanh(sum/10000)
     return rate
 ```
@@ -393,8 +393,8 @@ def draw(img,face_loc,rate=1):
 ```python
 def main():
     dingzhen_img = cv2.imread('res/std_dingzhen.jpg')
-	dingzhen_locator = face_locator(dingzhen_img)
-	dingzhen_key_points = extract_features(dingzhen_img,dingzhen_locator)
+    dingzhen_locator = face_locator(dingzhen_img)
+    dingzhen_key_points = extract_features(dingzhen_img,dingzhen_locator)
     stimg = draw(dingzhen_img,dingzhen_locator)#注意这里是丁真,所以让第三个参数rate为默认值
     #丁真提取完毕,暂时不去管他
     global maxrate
@@ -440,7 +440,7 @@ def main():
     img = None
     rate = 0
     while True:
-    	if n==100: n=0
+        if n==100: n=0
         ...
         if self_face_loc:
             if not n:
