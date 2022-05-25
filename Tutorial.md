@@ -100,9 +100,9 @@ while True:
 
 ```python
 def face_locator(img):
-	detector = dlib.get_frontal_face_detector()
-	dets = detector(img,0)
-	if not dets:
+    detector = dlib.get_frontal_face_detector()
+    dets = detector(img,0)
+    if not dets:
         return None
     return max(dets,key = lambda d:d.area())
 ```
@@ -180,7 +180,7 @@ dingzhen_key_points = extract_features(dingzhen_img,dingzhen_locator)
 
 ```python
 for i in range(68):
-	key_points[i]-=key_points[0]
+    key_points[i]-=key_points[0]
     dingzhen_key_points[i]-=dingzhen_key_points[0]
 ```
 
@@ -273,7 +273,7 @@ def cal(std_key_points,self_key_points):
         key_points[i]-=key_points[0]
         dingzhen_key_points[i]-=dingzhen_key_points[0]
     sum = 0
-	for i in range(68):
+    for i in range(68):
         sum+=np.linalg.norm(key_points[i]-dingzhen_key_points[i])
     rate = 1-np.tanh(sum/10000)
     return rate
